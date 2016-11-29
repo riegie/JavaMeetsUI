@@ -64,6 +64,34 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 txtValue.setText("" + value);
                 break;
 
+            // The next two case statements handle the SHRINK and GROW buttons from our UI
+            // We can confirm this from the R.id.btnGrow and R.id.btnShrink IDs.
+            // The getTextScaleX method returns the horizontal scale of the text within the object
+            // it is used on. We can see that the object it sus used on is our TextView txtValue.
+            // The size = at the start of the line of code assigns the returned
+            case R.id.btnGrow:
+                size = txtValue.getTextScaleX();
+                txtValue.setTextScaleX(size + 1);
+                break;
+
+            case R.id.btnShrink:
+                size = txtValue.getTextScaleX();
+                txtValue.setTextScaleX(size - 1);
+                break;
+
+            case R.id.btnHide:
+                if (txtValue.getVisibility() == View.VISIBLE) {
+                    // Currently visible so hide it
+                    txtValue.setVisibility(View.INVISIBLE);
+                    // Change text on the button.
+                    btnHide.setText("SHOW");
+                } else {
+                    // Current hidden so show it
+                    txtValue.setVisibility(View.VISIBLE);
+                    // Currently text on the button
+                    btnHide.setText("HIDE");
+                }
+                break;
         }
 
     }
